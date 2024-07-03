@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +42,176 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.login-bg {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/prijava.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -2; 
+overflow: hidden;
+
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 257px;
+  min-height: 173px;
+  z-index: -1;
+}
+
+
+
+.centered-container {
+  
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}
+
+.login-container img {
+  min-width: 257px;
+  min-height: 173px;
+}
+
+
+.centered-container {
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.centered-container > *:nth-child(2) {
+  position: absolute;
+ 
+  transform: translate(0%, -450%);
+
+ 
+}
+
+.centered-container > *:nth-child(2) {
+  z-index: 1;
+}
+
+.centered-container > *:nth-child(3) {
+  position: absolute;
+ 
+  transform: translate(4%, -430%);
+
+ 
+}
+
+.centered-container > *:nth-child(3) {
+  z-index: 2; 
+}
+
+.centered-container > *:nth-child(4) {
+  position: absolute;
+ 
+  transform: translate(0%, 10%);
+
+ 
+}
+
+.centered-container > *:nth-child(4) {
+  z-index: 3; 
+}
+
+
+.login-title{
+font-family: 'Montagu Slab' ;
+color:#A27A2E;
+letter-spacing: 10px;
+font-weight:500;
+font-size: 40px;
+}
+
+.login-title-2{
+  font-family: 'Montagu Slab' ;
+  color:#BDE0FE;
+  letter-spacing: 10px;
+  font-weight:500;
+  font-size: 30px;
+  margin-top: 10px;
+  
+  }
+
+
+  .login-form{
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    
+    display: flex;
+    flex-direction: column; 
+
+  }
+
+  .login-form input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Rounded corners for text inputs */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  margin-top:5px;
+  margin-bottom: 5px;
+}
+
+.login-form button{
+  width: auto;
+  display: inline-block;
+  margin-top: 80px;
+  
+  
+  border: 2px solid #A27A2E; /* Square button outline */
+  border-radius: 0; /* Square button corners */
+ 
+  color: #0A1D33;
+  font-family: 'Montagu Slab';
+  font-size:30px;
+  cursor: pointer;
+  
+  
+}
+
+.login-form label{
+  text-align: left;
+  font-family: 'Montagu Slab' ;
+  color:#A27A2E;
+  
+
+}
+
+.register-question{ font-size: 15px;
+  background-color: transparent;
+  font-family: 'Montagu Slab';
+  border: transparent;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 500px; 
+  z-index:20;
+  position: relative;
+
 }
