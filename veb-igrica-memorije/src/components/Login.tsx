@@ -1,10 +1,18 @@
 import React, { useEffect, useState, CSSProperties } from 'react';
 import { json, useNavigate } from 'react-router-dom';
 import { User } from '../models/user';
+import Navbar from './Navbar';
+import {useUser} from './UserContext';
 
 
 const Login = () => {
   const [currentUsers, setCurrentUsers]=useState<User[]>([new User('',''), new User('','')]);
+  const { currentUserContext, setCurrentUserContext } = useUser();
+
+  const addUsers = () => {
+      
+      setCurrentUserContext(currentUsers);
+  };
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
@@ -15,7 +23,8 @@ const Login = () => {
   const colorProperty: CSSProperties = {"color":buttonColor};
   const registerButtonColor:string = '#ECF3E7';
   const registerButtonColorProperty: CSSProperties = {"backgroundColor":registerButtonColor};
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>(() => { let temp= localStorage.getItem("userStorage"); if(temp===null||temp===undefined) return []; else return JSON.parse(temp);
+  });
  
   async function updateUsers(): Promise<any> {
      
@@ -61,14 +70,17 @@ if (users[i].username===username && users[i].password=== password){let tempCurre
         if(loginCount==1){
         setCount(loginCount+1); setButtonColor('#FFC8DD');}else{
             
-     console.log("currentusers ",currentUsers); goTo('/home'); console.log("currentusers ",currentUsers);}}
+     console.log("currentusers ",currentUsers); addUsers(); goTo('/home'); console.log("currentusers ",currentUsers);}}
     } else {
 
         if(isRegistering){
+let regFlag:boolean=false;
+         for( let i=0; i<users.length;i++){ if(username===users[i].username){regFlag=true;break;}}
+         if(regFlag==false){
 let newUser:User= new User(username,password);
 tempUsers.push(newUser);
 saveUsers(tempUsers);
-
+         }else{alert('Nalog postoji. Pokušajte ponovo.');}
         }else{
       alert('Netačni podaci. Pokušajte ponovo.');}
       
@@ -76,6 +88,7 @@ saveUsers(tempUsers);
     setPassword('');
 setUsername('');
 setPasswordConfirm('');
+console.log(users,'useri');
   }
   
 function saveUsers(tempUsers:User[]){
@@ -112,7 +125,7 @@ if(!isRegistering){
             <div className="centered-container">
             <img className="login-container" src="images/podlogaZaPrijavu.png"></img>
       <h2 className='login-title'>PRIJAVI SE</h2>
-      <h2 className='login-title-2' style={colorProperty}>IGRAĆ {loginCount}
+      <h2 className='login-title-2' style={colorProperty}>IGRAČ {loginCount}
       </h2>
       <form onSubmit={attemptLogin} className="login-form">
         <div>
