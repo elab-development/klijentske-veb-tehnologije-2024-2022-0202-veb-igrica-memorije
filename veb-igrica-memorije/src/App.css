@@ -225,42 +225,67 @@ textarea {
   padding: 10px 20px;
   background-color: #d9d9d946;
   color: white;
-
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
-  height: 6.67%; 
+  height: 6.67%;
+}
+
+.navbar *{
+
+  font-family: 'Montagu Slab'; 
+  
 }
 
 .navbar-left, .navbar-right {
   flex: 1;
+  display: flex;
+  align-items: center; 
 }
 
 .navbar-left button, .navbar-right button {
-  background-color: #444;
+  background-color: transparent;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  font-size: 28px;
+  font-weight:350;
   cursor: pointer;
+  
 }
 
 .navbar-middle {
   flex: 2;
   display: flex;
   justify-content: center;
+  align-items: center; 
   gap: 20px;
 }
 
+.navbar-profile-icons {
+  width: 4vw;
+  height: auto;
+}
+
+.navbar-middle-icons {
+  width: 3vw;
+  height: auto;
+}
+
 .navbar-middle button {
-  background-color: #444;
+  background-color: transparent;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
 }
 
-.navbar-middle button:hover, .navbar-left button:hover, .navbar-right button:hover {
-  background-color: #555;
+.navbar-right {
+  justify-content: flex-end; 
+  margin-right: 30px;
 }
+
+
