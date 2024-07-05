@@ -1,20 +1,19 @@
 import { useState } from "react";
 import React from "react";
-import { Card } from "../models/card";
+import { CardProps } from "../models/cardProps";
 
-const OneCard: React.FC<{id:number}> = ({id}) =>{
-    const [isFlipped,setIsFlipped] = useState<boolean>(false);
-    const [isMatched, setIsMatched] = useState<boolean>(false);
-    const [idLocal,setId] = useState<number>(id);
-    const handleFlip = () => {
-        if(isMatched==false){
-        setIsFlipped(!isFlipped);}
-    };
+const OneCard: React.FC<CardProps> = ({id,isFlipped,isMatched,flipCard,uid}) =>{
+    const [isFlippedLocal,setIsFlippedLocal] = useState<boolean>(false);
+    const [isMatchedLocal, setIsMatchedLocal] = useState<boolean>(false);
+    const [idLocal,setIdLocal] = useState<number>(id);
+    const handleFlipLocal = () => {
+        flipCard(uid,false);
+      };
 
     
 
     return (
-        <div className={`card-container ${isFlipped ? 'flipped' : ''} `} onClick={handleFlip}>
+        <div className={`card-container ${isFlipped ? 'flipped' : ''} `} onClick={handleFlipLocal}>
             <div className="card">
                 <img src="images/cards/zadnja.png" className={`card-front ${isMatched ? 'card-glow' : ''}`} >
                     

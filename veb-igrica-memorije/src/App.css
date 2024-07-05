@@ -61,6 +61,23 @@ overflow: hidden;
 
 }
 
+
+.points-left{
+margin-left: 20px;
+font-size: 24px;
+ background-color:#d9d9d958;; 
+ border: 1px;
+ border-radius: 5px;
+
+}
+
+.points-right{
+margin-right: 20px;
+font-size: 24px;
+ background-color:#d9d9d958;; 
+ border: 1px;
+ border-radius: 5px;
+}
 .login-container {
   display: flex;
   justify-content: center;
@@ -223,14 +240,35 @@ textarea {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #d9d9d946;
+  background-color: #d9d9d958;
   color: white;
   top: 0;
   left: 0;
   width: 100%;
   height: 6.67%;
+  z-index: 1000;
+}
+.navbar-overlay {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 10px 0px;
+  background-color:transparent;
+  color: rgb(255, 255, 255);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6.67%;
+  z-index: 999;
 }
 
+.navbar-overlay *{
+
+  font-family: 'Montagu Slab'; 
+  
+}
 .navbar *{
 
   font-family: 'Montagu Slab'; 
@@ -238,6 +276,12 @@ textarea {
 }
 
 .navbar-left, .navbar-right {
+  flex: 1;
+  display: flex;
+  align-items: center; 
+}
+
+.navbar-left-overlay, .navbar-right-overlay {
   flex: 1;
   display: flex;
   align-items: center; 
@@ -294,8 +338,8 @@ textarea {
 .card-container {
   perspective: 1000px;
   width: 150px;
-  height: 250px;
-  margin: 50px auto;
+  height: 257px;
+  margin: 40px auto;
   cursor: pointer;
 }
 
@@ -341,3 +385,33 @@ textarea {
   box-shadow: 0 0 20px #6f2d95b1;
 }
 
+.card-set{
+  
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  transform: scale(0.5);
+  gap: 100px; 
+  
+  transform-origin: top left;
+  margin-left: -200px;
+  margin-top:60px;
+  margin-left:18vw;
+  margin-right: 40vw;
+}
+
+.default-bg {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/pozadinaDefault.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -100;
+  overflow: hidden;
+}
