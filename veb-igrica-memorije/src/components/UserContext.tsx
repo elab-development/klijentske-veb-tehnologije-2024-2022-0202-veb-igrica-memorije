@@ -16,7 +16,7 @@ export const useUser = () => {
 };
 
 
-export const UserProvider: React.FC = ({ children }) => {
+export const UserProvider= ({children}: {children: React.ReactNode}) => {
     const [currentUserContext, setCurrentUserContext] = useState<User[]>([
         new User('user1','password1'), new User('user2','password1')
         

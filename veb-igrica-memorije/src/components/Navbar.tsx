@@ -2,11 +2,12 @@ import React from 'react';
 import Login from './Login';
 import { User } from '../models/user';
 import { useUser } from './UserContext';
+import OneCard from './OneCard';
 const Navbar: React.FC= ({ }) => {
     const  currentUsers = useUser().currentUserContext;
 
 
-    return (
+    return (<>
       <nav className="navbar">
         <div className="navbar-left">
             <img className="navbar-profile-icons" src="images/ikonicaZaLeviProfil.png"></img>
@@ -22,6 +23,8 @@ const Navbar: React.FC= ({ }) => {
           
         </div>
       </nav>
+      
+      </>
     );
   };
 
