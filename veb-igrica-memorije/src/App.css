@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
 
 
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -306,12 +307,12 @@ textarea {
 }
 
 .navbar-profile-icons {
-  width: 4vw;
+  width: 50px;
   height: auto;
 }
 
 .navbar-middle-icons {
-  width: 3vw;
+  width: 50px;
   height: auto;
 }
 
@@ -385,20 +386,27 @@ textarea {
   box-shadow: 0 0 20px #6f2d95b1;
 }
 
-.card-set{
-  
+.card-set {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(3, 1fr);
   transform: scale(0.5);
-  gap: 100px; 
-  
+  gap: 100px;
   transform-origin: top left;
-  margin-left: -200px;
-  margin-top:60px;
-  margin-left:18vw;
-  margin-right: 40vw;
+  margin-left: 280px;
+  margin-top: 22vh;
 }
+
+@media (max-width: 768px) {
+  .card-set {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    transform: scale(0.6); 
+    gap: 100px; 
+    margin-left: 260px;
+    margin-right: auto;
+    margin-top: 12vh;
+  }}
 
 .default-bg {
   margin: 0;
@@ -410,8 +418,73 @@ textarea {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   z-index: -100;
   overflow: hidden;
+  
 }
+
+.player-turn{
+font-family:'Montagu Slab'  ;
+font-size: 26px;
+}
+/*UserPage ovde*/
+.user-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.user-layout-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.user-layout-right {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-layout-left .component {
+  width: 100%;
+}
+
+.user-layout-right .component {
+  width: 100%;
+}
+
+
+.stack-layout {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.stack-layout .top, .stack-layout .middle {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.stack-layout .middle {
+  margin-top: 20px;
+}
+
+.stack-layout .bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+

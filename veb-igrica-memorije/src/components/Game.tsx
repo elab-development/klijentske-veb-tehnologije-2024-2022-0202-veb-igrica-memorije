@@ -298,7 +298,7 @@ else{
     <div className="navbar-overlay">
         
     <div className="points-left">POENI: {player1Points}</div>
-    <div>{`${waitingFlag?'...':(turn==0 ? currentUsers[0].username : currentUsers[1].username)} `}</div>
+    <div className="player-turn">{`${waitingFlag?'...':(turn==0 ? currentUsers[0].username : currentUsers[1].username)} `}</div>
         
         <div className="points-right">POENI: {player2Points}</div></div>
         
