@@ -7,16 +7,35 @@ import { useUser } from './UserContext';
 import Login from './Login';
 import { User } from '../models/user';
 import { CardProps } from "../models/cardProps";
+import { dailyWin } from "../models/dailyWin";
 
 
 const Game = () => {
-    const  currentUsers = useUser().currentUserContext;
+    let tempCurrentUsers:User[]=  useUser().currentUserContext;
+    const [currentUsers,setCurrentUsers ]=useState<User[]>( ():User[] =>{
+        
+      
+    if(tempCurrentUsers[0].username!=''&&tempCurrentUsers[1].username!=''){
+    
+    return tempCurrentUsers;
+
+    }else { let temp:any= sessionStorage.getItem("currentUserStorage"); if(temp!=undefined&&temp!=null){return JSON.parse(temp); }else {  return [new User("",""), new User("","")];}}
+
+
+
+    
+
+    });
+    const [somebodyWon,setSomebodyWon]= useState<boolean>(false);
+    const [winner,setWinner]= useState<string>('');
     const [waitingFlag, setWaitingFlag]= useState<boolean>(false);
     const [firstCardUID,setFirstCardUID]= useState<number>(-1);
     const [secondCardUID,setSecondCardUID]= useState<number>(-1);
     const [turn, setTurn] = useState<number>(0);
     const [player1Points, setPlayer1Points] = useState<number>(0);
     const [player2Points, setPlayer2Points] = useState<number>(0);
+    const [users, setUsers] = useState<User[]>(() => { let temp= localStorage.getItem("userStorage"); console.log("STORAGE",temp); if(temp===null||temp===undefined) return []; else return JSON.parse(temp);
+    });
     
  function initGame(){
     let i:number=0;
@@ -133,7 +152,100 @@ console.log("turn",turn);
     if(turn==0){setPlayer1Points(player1Points+1)}else
 if(turn==1) {setPlayer2Points(player2Points+1)}   
 console.log(player1Points,"!TO!",player2Points);
+
+
   }
+
+
+  useEffect(()=>{winCheck();},[]);
+
+  function winCheck(){
+    
+    let winFlag:boolean= true;
+for(let a=0;a<18;a++){
+console.log("CARDSA",a,cards[a].isMatched);
+if(!cards[a].isFlipped){
+winFlag=false;
+break;
+}
+}
+console.log("WINFLAG",winFlag);
+if(winFlag){ 
+    if(player1Points==player2Points){
+        setWinner(currentUsers[turn].username); if(!somebodyWon){addWin(currentUsers[turn].username);}
+    }else if(player1Points>player2Points){setWinner(currentUsers[0].username); if(!somebodyWon){addWin(currentUsers[1].username);}}else {
+        setWinner(currentUsers[1].username);if(!somebodyWon){addWin(currentUsers[1].username);}
+    }
+    
+    
+    setSomebodyWon(true);
+
+
+
+}
+
+}
+
+const flipAllExceptTwo = ()=>{
+    setCards(cards =>
+        cards.map(card =>
+          card.id!=1
+            ? { id: card.id, uid: card.uid, isMatched: card.isMatched, isFlipped: !card.isFlipped }
+            : card
+        )
+      );
+}
+/*^^^FOR TESTING*/ 
+
+
+  function addWin(winner:string){
+    let tempUsers:User[] = users;
+    let userNotFound:boolean=true;
+    let c:number =0;
+    for(c=0; c<tempUsers.length;c++){
+        console.log(tempUsers[c].username,":is it equal to:",winner);
+        if(tempUsers[c].username===winner){
+            userNotFound=false;break;
+        }
+    }
+    if(userNotFound){
+alert("USER NOT FOUND");
+        return;
+    }
+
+let todaysDate:Date=new Date();
+todaysDate.setHours(0,0,0,0);
+if(new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).getTime()===new Date(todaysDate).getTime()){
+    tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].winCount++;
+}else{
+   let newDailyWin:dailyWin = new dailyWin(todaysDate);
+   newDailyWin.winCount++;
+   tempUsers[c].winHistory.push(newDailyWin);
+}
+console.log("quick debug",tempUsers);
+
+for(let h=0;h<tempUsers.length;h++){console.log("quicker debug",tempUsers[h],"h:",h);
+if(tempUsers[h].username==currentUsers[0].username||tempUsers[h].username==currentUsers[1].username){
+    tempUsers[h].matchesPlayed++;
+}
+
+
+
+}
+
+setUsers(tempUsers);
+saveUsers(tempUsers);
+console.log("STORAGE2",tempUsers);
+
+  }
+
+  function saveUsers(tempUsers:User[]){
+    localStorage.setItem(
+        "userStorage",
+        JSON.stringify(tempUsers)
+    );
+
+}
   
   useEffect(() => {
     if (firstCardUID < 0 || secondCardUID < 0) return;
@@ -145,6 +257,7 @@ console.log(player1Points,"!TO!",player2Points);
       setFirstCardUID(-1);
       setSecondCardUID(-1);
       addPoint();
+      winCheck();
     
     } else {
         setWaitingFlag(true);
@@ -177,9 +290,8 @@ if(counter>=2)return true; else return false;
  
 const [cards,setCards] = useState<Card[]>(initGame());
     
-
-
-
+if(somebodyWon){return(<><div className="default-bg"></div><Navbar></Navbar><h2> Pobednik: {winner}</h2></>);}
+else{
     return(<div className="game-body">
     <div className="default-bg"></div>
     <Navbar></Navbar>
@@ -189,6 +301,7 @@ const [cards,setCards] = useState<Card[]>(initGame());
     <div>{`${waitingFlag?'...':(turn==0 ? currentUsers[0].username : currentUsers[1].username)} `}</div>
         
         <div className="points-right">POENI: {player2Points}</div></div>
+        
     <div className="card-set">
         
     {cards.map((card) => (
@@ -206,9 +319,9 @@ const [cards,setCards] = useState<Card[]>(initGame());
       ))}
     </div>
 
+    <button onClick={flipAllExceptTwo}>flipall</button>
     
-    
-    </div>);
+    </div>);}
 }
 
 
