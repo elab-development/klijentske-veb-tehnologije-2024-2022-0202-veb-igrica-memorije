@@ -304,6 +304,7 @@ textarea {
   justify-content: center;
   align-items: center; 
   gap: 20px;
+
 }
 
 .navbar-profile-icons {
@@ -411,7 +412,7 @@ textarea {
 .default-bg {
   margin: 0;
   padding: 0;
-  background-image: url('images/pozadinaDefault.png');
+  background-image: url('../images/pozadinaDefault.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -438,6 +439,8 @@ font-size: 26px;
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  margin-top:22vh;
+  
 }
 
 .user-layout-left {
@@ -456,6 +459,7 @@ font-size: 26px;
 
 .user-layout-left .component {
   width: 100%;
+  margin-bottom:-300px;
 }
 
 .user-layout-right .component {
@@ -473,10 +477,28 @@ font-size: 26px;
   width: 100%;
   position: relative;
   z-index: 2;
+  margin-top: 5px;
+  margin-left: 30px;
+  padding-top:30px;
+}
+
+.stack-layout .top{
+  margin-left: 12px;
+ 
+}
+
+.stack-layout .top img{
+  max-height: 150px;
 }
 
 .stack-layout .middle {
-  margin-top: 20px;
+ 
+  font-family: 'Montagu Slab';
+  color:white;
+  overflow-wrap: break-word;
+  font-weight: 350;
+  font-size: 30px;
+  width: 200px;
 }
 
 .stack-layout .bottom {
@@ -488,3 +510,63 @@ font-size: 26px;
   z-index: 1;
 }
 
+.stack-layout-2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.stack-layout-2 .top, .stack-layout-2 .middle {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-top: 5px;
+  margin-left: 30px;
+  padding-top:30px;
+}
+
+.stack-layout-2 .top{
+  margin-left: 12px;
+ 
+}
+
+.stack-layout-2 .top img{
+  max-height: 150px;
+}
+
+.stack-layout-2 .top, .stack-layout-2 .middle{
+  margin-bottom:30px;
+  margin-top:-80px;
+}
+
+.stack-layout-2 .middle {
+ 
+  font-family: 'Montagu Slab';
+  color:white;
+  overflow-wrap: break-word;
+  font-weight: 350;
+  font-size: 30px;
+  width: 200px;
+  margin-top:-30px;
+}
+
+.stack-layout-2 .bottom {
+  position: absolute;
+  top: 125px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 1;
+}
+
+.tiny-field-image{
+  margin-left: -18px;
+}
+
+.top .matches-played{
+color:#A27A2E;
+font-size:30px;
+font-weight: 350;
+margin-top:0px;
+
+}

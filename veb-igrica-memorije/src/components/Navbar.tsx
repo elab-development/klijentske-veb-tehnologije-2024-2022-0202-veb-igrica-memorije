@@ -34,22 +34,22 @@ const Navbar: React.FC= ({ }) => {
     const goTo =  useNavigate();
     function goHome(){goTo("/home"); goTo(0); }
     function goLogin(){goTo("/"); }
-    function goLeftUser(){goTo(`/users/${currentUsers[0].username}`)};
-    function goRightUser(){goTo(`/users/${currentUsers[1].username}`)};
+    function goLeftUser(){goTo(`/users/${currentUsers[0].username}`); goTo(0);};
+    function goRightUser(){goTo(`/users/${currentUsers[1].username}`); goTo(0);};
 
     return (<>
       <nav className="navbar">
         <div className="navbar-left">
-            <img className="navbar-profile-icons" src="images/ikonicaZaLeviProfil.png"></img>
+            <img className="navbar-profile-icons" src="../images/ikonicaZaLeviProfil.png"></img>
           <button onClick={goLeftUser}>{currentUsers[0].username}</button>
         </div>
         <div className="navbar-middle">
-          <button onClick={goHome}><img src="images/HomeIcon.png" className='navbar-middle-icons'></img></button>
-          <button><img src="images/cardIcon.png" className='navbar-middle-icons'></img></button>
+          <button onClick={goHome}><img src="../images/HomeIcon.png" className='navbar-middle-icons'></img></button>
+          <button><img src="../images/cardIcon.png" className='navbar-middle-icons'></img></button>
         </div>
         <div className="navbar-right">
         <button onClick={goRightUser}>{currentUsers[1].username}</button>
-        <img className="navbar-profile-icons" src="images/ikonicaZaDesniProfil.png" ></img>
+        <img className="navbar-profile-icons" src="../images/ikonicaZaDesniProfil.png" ></img>
           
         </div>
       </nav>

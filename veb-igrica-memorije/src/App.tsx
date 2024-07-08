@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Game />}/>
-          <Route path="users/:username" element={<UserPage />}/>
+          <Route path="users/:username" element={<UserPage  />}/>
         </Routes>
       </div>
     </Router>
