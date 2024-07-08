@@ -100,7 +100,7 @@ return(<>
       </div></div>
   </div>
   <div className="user-layout-right">
-    <div className="component">{currentUser==null?<div></div> :<ChartComponent userProp={currentUser}></ChartComponent>}</div>
+    <div className="component"><div className="chartBG">{currentUser==null?<div></div> :<ChartComponent userProp={currentUser}></ChartComponent>}</div></div>
   </div></div>
 
 
