@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { User } from "../models/user";
+import { Chart } from "chart.js";
+import ChartComponent from "./ChartComponent";
 /*import Image1 from "images/podlogaMala.png";
 import Image2 from "images/podlogaVelika.png";*/
 const UserPage: React.FC =()=> {
@@ -98,7 +100,7 @@ return(<>
       </div></div>
   </div>
   <div className="user-layout-right">
-    <div className="component">Component 3</div>
+    <div className="component">{currentUser==null?<div></div> :<ChartComponent userProp={currentUser}></ChartComponent>}</div>
   </div></div>
 
 
