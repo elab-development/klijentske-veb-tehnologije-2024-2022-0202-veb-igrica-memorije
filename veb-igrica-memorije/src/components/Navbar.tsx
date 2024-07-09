@@ -36,7 +36,7 @@ const Navbar: React.FC= ({ }) => {
     function goLogin(){goTo("/"); }
     function goLeftUser(){goTo(`/users/${currentUsers[0].username}`); goTo(0);};
     function goRightUser(){goTo(`/users/${currentUsers[1].username}`); goTo(0);};
-
+    function goLeaderboard(){goTo('/leaderboard');}
     return (<>
       <nav className="navbar">
         <div className="navbar-left">
@@ -45,7 +45,7 @@ const Navbar: React.FC= ({ }) => {
         </div>
         <div className="navbar-middle">
           <button onClick={goHome}><img src="../images/cardIcon.png" className='navbar-middle-icons'></img></button>
-          <button><img src="../images/podiumIcon.png" className='navbar-middle-icons'></img></button>
+          <button onClick={goLeaderboard}><img src="../images/podiumIcon.png" className='navbar-middle-icons'></img></button>
         </div>
         <div className="navbar-right">
         <button onClick={goRightUser}>{currentUsers[1].username}</button>

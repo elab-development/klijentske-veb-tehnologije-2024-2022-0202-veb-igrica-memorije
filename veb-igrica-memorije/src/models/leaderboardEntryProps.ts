@@ -1,5 +1,5 @@
 export interface LeaderboardEntryProps{
 username: string;
-winCount: number;
-
+winCount: number|string;
+rank: number|string;
 };

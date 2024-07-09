@@ -11,6 +11,7 @@ import { UserProvider } from './components/UserContext'
 import OneCard from './components/OneCard'
 import Game from './components/Game'
 import { Card } from './models/card'
+import Leaderboard from './components/Leaderboard'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Game />}/>
+          <Route path="/leaderboard" element={<Leaderboard />}/>
           <Route path="users/:username" element={<UserPage  />}/>
         </Routes>
       </div>
