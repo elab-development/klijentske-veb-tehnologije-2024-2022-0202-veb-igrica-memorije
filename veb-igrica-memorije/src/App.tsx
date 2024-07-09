@@ -12,6 +12,7 @@ import OneCard from './components/OneCard'
 import Game from './components/Game'
 import { Card } from './models/card'
 import Leaderboard from './components/Leaderboard'
+import Cards from './components/Cards'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/home" element={<Game />}/>
           <Route path="/leaderboard" element={<Leaderboard />}/>
           <Route path="users/:username" element={<UserPage  />}/>
+          <Route path= "/cards" element ={<Cards/>}/>
         </Routes>
       </div>
     </Router>

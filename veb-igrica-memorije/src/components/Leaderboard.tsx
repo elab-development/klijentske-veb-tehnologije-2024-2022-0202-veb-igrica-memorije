@@ -107,7 +107,7 @@ setCurrentPage(1);
     <div className="leaderboard">
     <div className='filters'>
       <form onSubmit={e => e.preventDefault()}>
-        <input
+        <input className="search"
           type="text"
           placeholder="Pretraži po imenu..."
           value={searchQuery}

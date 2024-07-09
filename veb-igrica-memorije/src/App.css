@@ -435,7 +435,7 @@ font-size: 26px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
+  gap: 50px;
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
@@ -443,15 +443,18 @@ font-size: 26px;
   
 }
 
+
+
 .user-layout-left {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   flex: 1;
 }
 
 .user-layout-right {
   flex: 2;
+  margin-left:100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,15 +480,16 @@ font-size: 26px;
   width: 100%;
   position: relative;
   z-index: 2;
+  left:35px;
   margin-top: 5px;
-  margin-left: 30px;
+  margin-left: 0px;
   padding-top:30px;
 }
 
 .stack-layout .top{
   left:10px;
-  margin-left: -0vw;
-  margin-right: 0px;
+  margin-left: -0.5vw;
+  margin-right: 1vw;
   padding-left: 0px;
   padding-right: 0px;
   margin-right:-50px;
@@ -516,9 +520,10 @@ font-size: 26px;
 }
 
 .stack-layout-2 {
+  top:100px;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .stack-layout-2 .top, .stack-layout-2 .middle {
@@ -541,7 +546,7 @@ font-size: 26px;
 
 .stack-layout-2 .top, .stack-layout-2 .middle{
   margin-bottom:30px;
-  margin-top:-80px;
+  margin-top:-250px;
 }
 
 .stack-layout-2 .middle {
@@ -573,13 +578,18 @@ color:#A27A2E;
 font-size:30px;
 font-weight: 350;
 margin-top:0px;
+margin-left: -20px;
 
 }
 .chartBG{
-  background-color: #0A1D33;
+  background-color: #0a1d33b4;
   margin-left:50px;
+  margin-top:40px;
 }
+.chartBG:hover{
 
+  background-color: #0a1d33;
+}
 
 .leaderboard-entry {
   background-color: #0a1d3377;
@@ -639,4 +649,9 @@ margin-top:0px;
   .dropdown-select *{
 
     color:black;
+  }
+
+  .search{
+color:black;
+
   }
