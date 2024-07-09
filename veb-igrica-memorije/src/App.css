@@ -677,9 +677,46 @@ color:white
     width: 500px;
     border-radius: 4px;
     border-style: solid;
+    z-index: 540;
   }
 
 
   .big-card{
     margin-left: -54px;
+    z-index: 550;
   }
+
+  .button-container {
+    top:300px;
+    left: 0;
+    z-index: 50;
+    position:absolute;
+
+    padding: 20px;
+    width: 100%;
+    
+    background-color: transparent;
+    z-index: -1;
+  }
+  
+  .left-button, .right-button {
+    padding: 10px 20px;
+    left:0px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .left-button {
+    position: relative;
+    left: -300px;
+  }
+  
+  .right-button {
+    position:relative;
+    left:300px;
+  }
+
+  .left-button img{
+    transform: scaleX(-1);
+  }
+  

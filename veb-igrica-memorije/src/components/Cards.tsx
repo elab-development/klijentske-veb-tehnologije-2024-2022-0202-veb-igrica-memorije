@@ -44,7 +44,12 @@ return (<>
 ></OneCard>
 </div>
 <div className="card-temperature">{temperature==null?("TEMPERATURA: "+temperature):""}</div>
+
 </div>
+<div className="button-container">
+    <button className="left-button"><img src={"../images/ArrowIcon.png"} width={50}></img></button>
+    <button className="right-button"><img src={"../images/ArrowIcon.png"} width={50}></img></button>
+  </div>
 </>);
 };
 
