@@ -18,7 +18,7 @@ const OneCard: React.FC<CardProps> = ({id,isFlipped,isMatched,flipCard,uid}) =>{
                 <img src="images/cards/zadnja.png" className={`card-front ${isMatched ? 'card-glow' : ''}`} >
                     
                 </img>
-                < img src={`../../images/cards/kartica${idLocal}.png`} className={`card-back ${isMatched ? 'card-glow' : ''}`}>
+                < img src={`../../images/cards/kartica${id}.png`} className={`card-back ${isMatched ? 'card-glow' : ''}`}>
                 </img>
                 
             </div>

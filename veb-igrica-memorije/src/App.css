@@ -190,8 +190,8 @@ textarea {
   padding: 10px;
   
   border: 1px solid #ccc;
-  border-radius: 10px; /* Rounded corners for text inputs */
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  border-radius: 10px; 
+  box-sizing: border-box; 
   margin-top:5px;
   margin-bottom: 5px;
 }
@@ -202,8 +202,8 @@ textarea {
   margin-top: 80px;
   
   
-  border: 2px solid #A27A2E; /* Square button outline */
-  border-radius: 0; /* Square button corners */
+  border: 2px solid #A27A2E; 
+  border-radius: 0; 
  
   color: #0A1D33;
   font-family: 'Montagu Slab';
@@ -681,12 +681,19 @@ color:white
   }
 
 
-  .big-card{
+  .big-card {
     margin-left: -54px;
-    z-index: 550;
+    z-index: 10000;
+    
+    
+  }
+  .big-card *{
+    z-index: 10000;
+    cursor: pointer;
   }
 
   .button-container {
+    pointer-events: none;
     top:300px;
     left: 0;
     z-index: 50;
@@ -694,26 +701,36 @@ color:white
 margin-left: 0px;
     padding: 20px;
     width: 100%;
-    
+    z-index: 0;
     background-color: transparent;
-    z-index: -1;
+    
   }
   
+  
   .left-button, .right-button {
+    pointer-events:all;
     padding: 10px 20px;
     left:0px;
     font-size: 16px;
     cursor: pointer;
+    z-index: 1;
+  }
+  
+  .button-container :disabled{
+    background-color: rgba(255, 255, 255, 0.242);
+    cursor:default;
   }
   
   .left-button {
     position: relative;
     left: -300px;
+    z-index: 1;
   }
   
   .right-button {
     position:relative;
     left:300px;
+    z-index: 1;
   }
 
   .left-button img{
@@ -735,8 +752,14 @@ margin-left: 170px;
     width: 110%;
     
     background-color: transparent;
-    z-index: -1;
+    
   }
 .big-transparent-block{margin-top:50px;
-margin-left:30px;}
+margin-left:30px;
+}
+}
+
+.big-card{
+  margin-left: -54px;
+ 
 }
