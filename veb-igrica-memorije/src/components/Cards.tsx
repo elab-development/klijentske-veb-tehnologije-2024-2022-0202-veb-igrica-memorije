@@ -28,7 +28,7 @@ setTemperature(avgTemp);
   });
 }
 
-return (<>
+return (<div className="cards-screen">
 <div className="default-bg"></div>
 <Navbar></Navbar>
 <div className="big-transparent-block">
@@ -50,7 +50,7 @@ return (<>
     <button className="left-button"><img src={"../images/ArrowIcon.png"} width={50}></img></button>
     <button className="right-button"><img src={"../images/ArrowIcon.png"} width={50}></img></button>
   </div>
-</>);
+</div>);
 };
 
 export default Cards;

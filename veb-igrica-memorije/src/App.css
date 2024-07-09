@@ -691,7 +691,7 @@ color:white
     left: 0;
     z-index: 50;
     position:absolute;
-
+margin-left: 0px;
     padding: 20px;
     width: 100%;
     
@@ -717,6 +717,26 @@ color:white
   }
 
   .left-button img{
-    transform: scaleX(-1);
+     transform: scaleX(-1);
   }
   
+  .cards-screen{
+    margin-left: 25vw;
+    margin-right: 30vw;
+  }
+
+  @media (max-width: 768px){ .button-container{
+    top:350px;
+    left: 0;
+    z-index: 50;
+    position:absolute;
+margin-left: 170px;
+    padding: 20px;
+    width: 110%;
+    
+    background-color: transparent;
+    z-index: -1;
+  }
+.big-transparent-block{margin-top:50px;
+margin-left:30px;}
+}
