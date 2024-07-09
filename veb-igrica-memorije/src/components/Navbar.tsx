@@ -44,8 +44,8 @@ const Navbar: React.FC= ({ }) => {
           <button onClick={goLeftUser}>{currentUsers[0].username}</button>
         </div>
         <div className="navbar-middle">
-          <button onClick={goHome}><img src="../images/HomeIcon.png" className='navbar-middle-icons'></img></button>
-          <button><img src="../images/cardIcon.png" className='navbar-middle-icons'></img></button>
+          <button onClick={goHome}><img src="../images/cardIcon.png" className='navbar-middle-icons'></img></button>
+          <button><img src="../images/podiumIcon.png" className='navbar-middle-icons'></img></button>
         </div>
         <div className="navbar-right">
         <button onClick={goRightUser}>{currentUsers[1].username}</button>
