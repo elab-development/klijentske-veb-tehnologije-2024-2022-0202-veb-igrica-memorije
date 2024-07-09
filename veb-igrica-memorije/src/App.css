@@ -655,3 +655,31 @@ margin-left: -20px;
 color:black;
 
   }
+
+  .card-temperature{
+margin-top:140px;
+font-size:24px;
+font-family: 'Montagu Slab';
+color:white
+  }
+
+  .big-card-title{font-size:26px;
+    margin-top:50px;
+    font-family: 'Montagu Slab';
+    color: #a27a2e;
+    font-size:36px;
+  }
+
+  .big-transparent-block{
+    background-color:#6f2d9568;
+    border-color:#a27a2e;
+    height: auto;
+    width: 500px;
+    border-radius: 4px;
+    border-style: solid;
+  }
+
+
+  .big-card{
+    margin-left: -54px;
+  }
