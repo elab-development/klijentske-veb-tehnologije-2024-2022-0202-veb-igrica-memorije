@@ -21,10 +21,22 @@ const Cards = ()=>{
 
 
   async function fetchPlanetData(name:string):Promise<number|null> {
-
-  //IMPLEMENTIRAJ OVDE
+    if(name==="sun"){return 10000};
+    const url = 'https://api.le-systeme-solaire.net/rest.php/bodies?data=avgTemp&filter%5B%5D=englishName%2Ceq%2C'+name+'&filter%5B%5D';
   
-  return null;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error( String(response.status));
+      }
+  
+      const temp = await response.json();
+      console.log("BODIES",temp.bodies);
+      return temp.bodies[0].avgTemp; 
+    } catch (error) {
+      console.error('Error fetching Pluto data:' + error);
+      return null;
+    }
   }
   
 
