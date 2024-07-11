@@ -4,8 +4,8 @@ import { describe, it, expect, vi } from 'vitest';
 import OneCard from './OneCard';
 import { CardProps } from '../models/cardProps';
 
-describe('OneCard Functionality', () => {
-  it('should flip the card when clicked', () => {
+describe('OneCard Funckcionalnost', () => {
+  it('okreće karticu na klik', () => {
     const mockFlipCard = vi.fn();
     const props: CardProps = {
       id: 1,

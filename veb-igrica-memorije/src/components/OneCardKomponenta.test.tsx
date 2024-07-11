@@ -4,8 +4,8 @@ import { describe, it, expect, vi } from 'vitest';
 import OneCard from './OneCard';
 import { CardProps } from '../models/cardProps';
 
-describe('OneCard Component', () => {
-  it('should render the card component', () => {
+describe('OneCard Komponenta', () => {
+  it('Proverava da li komponenta ispravno renderuje slike kartica.', () => {
     const props: CardProps = {
       id: 1,
       isFlipped: false,
