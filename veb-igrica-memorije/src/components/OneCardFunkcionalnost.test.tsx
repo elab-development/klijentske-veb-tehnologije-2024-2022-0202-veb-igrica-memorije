@@ -1,11 +1,12 @@
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import OneCard from './OneCard';
 import { CardProps } from '../models/cardProps';
 
-describe('OneCard Funckcionalnost', () => {
-  it('okreće karticu na klik', () => {
+describe('OneCard Komponenta', () => {
+  it('Testira funkcionalnost okretanja kartice kada se klikne na karticu.', () => {
     const mockFlipCard = vi.fn();
     const props: CardProps = {
       id: 1,
