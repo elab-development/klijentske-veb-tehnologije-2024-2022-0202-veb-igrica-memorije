@@ -26,14 +26,14 @@ const Login = () => {
   const [users, setUsers] = useState<User[]>(() => { let temp= localStorage.getItem("userStorage"); if(temp===null||temp===undefined) return []; else return JSON.parse(temp);
   });
  
-  async function updateUsers(): Promise<any> {
+  function updateUsers(): void {
      
     let data = localStorage.getItem("userStorage");
         if (data !== undefined && data!==null) {
             setUsers(JSON.parse(data));
         }
 
-        return users;
+        return;
 }
 
   
@@ -58,13 +58,13 @@ if (users[i].username===username && users[i].password=== password){let tempCurre
  }
 
 
-  async function attemptLogin (e: React.FormEvent) {
+  function attemptLogin (e: React.FormEvent) {
     e.preventDefault();
     if(isRegistering){if(password!=passwordConfirm){alert('Ne poklapaju se šifre. Pokušajte ponovo.'); setPassword('');
         setUsername('');
         setPasswordConfirm('');
     return; }}
-    let tempUsers:User[]= await updateUsers();
+    let tempUsers:User[]=  users;
     if (userExists(tempUsers)) { 
         if(isRegistering){alert('Prazno polje ili podaci postoje. Pokušajte ponovo.');}else{ 
         if(loginCount==1){
@@ -80,6 +80,7 @@ let regFlag:boolean=false;
 let newUser:User= new User(username,password);
 tempUsers.push(newUser);
 saveUsers(tempUsers);
+updateUsers();
          }else{alert('Nalog postoji. Pokušajte ponovo.');}
         }else{
       alert('Netačni podaci. Pokušajte ponovo.');}
