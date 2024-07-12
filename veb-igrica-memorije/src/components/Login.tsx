@@ -92,7 +92,7 @@ console.log(users,'useri');
   }
   
 function saveUsers(tempUsers:User[]){
-    
+    console.log("USER HAS BEEN SAVED", tempUsers);
     
         localStorage.setItem(
             "userStorage",

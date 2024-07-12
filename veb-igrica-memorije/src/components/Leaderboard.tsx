@@ -66,7 +66,7 @@ for(let r=0;r<ranking.length;r++){
 for(let r=0;r<ranking.length;r++){
     if(!ranking[r].username.includes(search)){
         ranking.splice(r,1);
-        r=0;
+        r=-1;
     }
 }
 
@@ -146,7 +146,7 @@ setCurrentPage(1);
       </div>
       </div>
       </div>  
-      <LeaderboardEntry rank="RANG" username="NAME" winCount="POBEDE"></LeaderboardEntry>
+      <LeaderboardEntry rank="RANG" username="IME " winCount="POBEDE"></LeaderboardEntry>
       
       {currentEntries.map((entry) => (
         <LeaderboardEntry rank={entry.rank} username={entry.username} winCount={entry.winCount} />
