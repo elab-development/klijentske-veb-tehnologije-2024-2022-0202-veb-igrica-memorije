@@ -781,7 +781,7 @@ height: 200%;
 
   }
   .centered-container{
-  margin-left: 980px;
+  margin-left: 990px;
   scale: 400%;
   margin-top: 2000px;
 
@@ -789,9 +789,9 @@ height: 200%;
   }
   .register-question{
     position: absolute;
-    top:calc(2080px - 50vh);
-    left:580px;
-    width: 100%;
+    top:calc(2150px - 50vh);
+    left: 400px;
+    width: 200%;
     font-size: 60px;
   }
   .leaderboard{
@@ -824,6 +824,11 @@ font-size: 60px;
     top:1500px;
     margin-left:-100px;
     margin-bottom:20px;
+  }
+  .login-title{
+    position: absolute;
+    top:0;
+    z-index: 100;
   }
 
   .user-layout-left{
