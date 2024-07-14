@@ -222,20 +222,14 @@ if(new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).getT
    newDailyWin.winCount++;
    tempUsers[c].winHistory.push(newDailyWin);
 }
-console.log("quick debug",tempUsers);
 
-for(let h=0;h<tempUsers.length;h++){console.log("quicker debug",tempUsers[h],"h:",h);
+for(let h=0;h<tempUsers.length;h++){
 if(tempUsers[h].username==currentUsers[0].username||tempUsers[h].username==currentUsers[1].username){
     tempUsers[h].matchesPlayed++;
 }
-
-
-
 }
-
 setUsers(tempUsers);
 saveUsers(tempUsers);
-console.log("STORAGE2",tempUsers);
 
   }
 

@@ -38,10 +38,22 @@ const ChartComponent: React.FC<userProps> =({userProp})=>{
 
     const data ={
 
-    labels: [String(cleanedArray[0].date).substring(0,3),String(cleanedArray[1].date).substring(0,3),String(cleanedArray[2].date).substring(0,3),String(cleanedArray[3].date).substring(0,3),String(cleanedArray[4].date).substring(0,3),String(cleanedArray[5].date).substring(0,3),String(cleanedArray[6].date).substring(0,3)],
+    labels: [String(cleanedArray[0].date).substring(0,3),
+    String(cleanedArray[1].date).substring(0,3),
+    String(cleanedArray[2].date).substring(0,3),
+    String(cleanedArray[3].date).substring(0,3),
+    String(cleanedArray[4].date).substring(0,3),
+    String(cleanedArray[5].date).substring(0,3),
+    String(cleanedArray[6].date).substring(0,3)],
     datasets: [{
  label: 'Broj Pobeda',
- data: [cleanedArray[0].winCount,cleanedArray[1].winCount,cleanedArray[2].winCount,cleanedArray[3].winCount,cleanedArray[4].winCount,cleanedArray[5].winCount,cleanedArray[6].winCount],
+ data: [cleanedArray[0].winCount,
+ cleanedArray[1].winCount,
+ cleanedArray[2].winCount,
+ cleanedArray[3].winCount,
+ cleanedArray[4].winCount,
+ cleanedArray[5].winCount,
+ cleanedArray[6].winCount],
  backgroundColor: '#6E2D95',
  borderColor: 'black',
 
@@ -56,9 +68,6 @@ const options = {
 return(<>
 <Bar data ={data}
  options = {options}></Bar>
- 
-
-
 </>);
     
 };

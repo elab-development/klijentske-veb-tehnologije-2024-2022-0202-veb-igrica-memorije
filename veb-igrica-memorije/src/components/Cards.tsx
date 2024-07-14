@@ -34,7 +34,7 @@ const Cards = ()=>{
       console.log("BODIES",temp.bodies);
       return temp.bodies[0].avgTemp; 
     } catch (error) {
-      console.error('Error fetching Pluto data:' + error);
+      console.error('Error fetching Planet data:' + error);
       return null;
     }
   }
