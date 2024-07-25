@@ -34,9 +34,25 @@ const Game = () => {
     const [turn, setTurn] = useState<number>(0);
     const [player1Points, setPlayer1Points] = useState<number>(0);
     const [player2Points, setPlayer2Points] = useState<number>(0);
-    const [users, setUsers] = useState<User[]>(() => { let temp= localStorage.getItem("userStorage"); console.log("STORAGE",temp); if(temp===null||temp===undefined) return []; else return JSON.parse(temp);
-    });
+    const [users, setUsers] = useState<User[]>([]);
+    useEffect(()=>{updateUsers()},[]);
+    async function updateUsers() {
+ 
+      try {
+        const response = await fetch("http://localhost:5000/userapi");
+        if (!response.ok) {
+          throw new Error( String(response.status));
+        }
     
+        const tempUsers = await response.json();
+        console.log("USERS!!",tempUsers);
+        setUsers(tempUsers);
+        return tempUsers; 
+      } catch (error) {
+        console.error('Error pri fetchovanju usera:' + error);
+        return [];
+      }
+    }
  function initGame(){
     let i:number=0;
     let newCards:Card[]=[];
@@ -215,7 +231,7 @@ alert("USER NOT FOUND");
 
 let todaysDate:Date=new Date();
 todaysDate.setHours(0,0,0,0);
-if(new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).getTime()===new Date(todaysDate).getTime()){
+if(new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).toISOString().slice(0, 10)===new Date(todaysDate).toISOString().slice(0, 10)){
     tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].winCount++;
 }else{
    let newDailyWin:dailyWin = new dailyWin(todaysDate);
@@ -233,13 +249,20 @@ saveUsers(tempUsers);
 
   }
 
-  function saveUsers(tempUsers:User[]){
-    localStorage.setItem(
-        "userStorage",
-        JSON.stringify(tempUsers)
-    );
-
-}
+  async function saveUsers(tempUsers:User[]){
+    console.log(JSON.stringify(tempUsers),"TU");
+ 
+     const request = new Request("http://localhost:5000/userapi", { headers: {
+       'Content-Type': 'application/json',
+   },
+       method: "POST",
+       body: JSON.stringify(tempUsers),
+     });
+     
+     const response = await fetch(request);
+     console.log("POST request response:"+response);
+ 
+ }
   
   useEffect(() => {
     if (firstCardUID < 0 || secondCardUID < 0) return;
@@ -313,7 +336,7 @@ else{
       ))}
     </div>
 
-    <button onClick={flipAllExceptTwo}>flipall</button>
+    <button className="flip-all-btn" onClick={flipAllExceptTwo}>flip-all-flip-all-flip-all-flip-all-flip-all-flip-all-flip-all-flip-all</button>
     
     </div>);}
 }

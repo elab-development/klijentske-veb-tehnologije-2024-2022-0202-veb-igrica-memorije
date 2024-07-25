@@ -14,6 +14,7 @@ const ChartComponent: React.FC<userProps> =({userProp})=>{
         let today: Date = new Date();
         today.setHours(0, 0, 0, 0);
         let tempDay: Date = new Date(today);
+        console.log("tempday,",tempDay)
     
         for (let i = -6; i <= 0; i++) {
           tempDay.setDate(today.getDate() + i);

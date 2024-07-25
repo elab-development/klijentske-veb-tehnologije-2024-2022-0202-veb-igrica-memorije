@@ -10,13 +10,23 @@ const UserPage: React.FC =()=> {
  let didISetCat:boolean=false;
     const {username} = useParams( );
     const [matchesPlayed,setMatchesPlayed] = useState<number>(0); 
-    const [users, setUsers] = useState<User[]>(() => { let temp= localStorage.getItem("userStorage"); if(temp===null||temp===undefined) return []; else{
-      
-      
-       return JSON.parse(temp);}
-    });
+    const [users, setUsers] = useState<User[]>([]);
     const [currentUser,setCurrentUser] = useState<User|null>(null);
-    useEffect(()=>{ if(currentUser==null){ updateCurrentUser();} },[]);
+    useEffect(() => {
+     
+      const fetchData = async () => {
+        
+        const data = await fetch('http://localhost:5000/userapi');
+        const json = await data.json();
+        setUsers(json);
+      }
+    
+     
+      fetchData()
+        .catch(console.error);
+    }, [])
+
+    useEffect(()=>{updateCurrentUser()},[users]);
     
     function updateMatchesPlayed(currentUser:User){
   if(currentUser==null)return;

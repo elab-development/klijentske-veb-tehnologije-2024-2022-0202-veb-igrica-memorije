@@ -23,24 +23,34 @@ const Login = () => {
   const colorProperty: CSSProperties = {"color":buttonColor};
   const registerButtonColor:string = '#ECF3E7';
   const registerButtonColorProperty: CSSProperties = {"backgroundColor":registerButtonColor};
-  const [users, setUsers] = useState<User[]>(() => { let temp= localStorage.getItem("userStorage"); if(temp===null||temp===undefined) return []; else return JSON.parse(temp);
-  });
- 
-  function updateUsers(): void {
-     
-    let data = localStorage.getItem("userStorage");
-        if (data !== undefined && data!==null) {
-            setUsers(JSON.parse(data));
-        }
+  const [users, setUsers] = useState<User[]>( []
+  );
 
-        return;
+ useEffect(()=>{updateUsers()},[])
+ 
+ async function updateUsers() {
+ 
+  try {
+    const response = await fetch("http://localhost:5000/userapi");
+    if (!response.ok) {
+      throw new Error( String(response.status));
+    }
+
+    const tempUsers = await response.json();
+    console.log("USERS!!",tempUsers);
+    setUsers(tempUsers);
+    return tempUsers; 
+  } catch (error) {
+    console.error('Error pri fetchovanju usera:' + error);
+    return [];
+  }
 }
 
   
  
   
 
-  useEffect(() => {  updateUsers(); }, []); 
+ 
 
   
 
@@ -51,21 +61,22 @@ const Login = () => {
 for(let i=0; i<currentUsers.length;i++){if(currentUsers[i].password===password && currentUsers[i].username==username)return false;}
 
 for(let i=0;i<users.length;i++){ 
-    console.log(users[i].username,users[i].password);
+    console.log(users[i].username,users[i].password,users.length);
 if (users[i].username===username && users[i].password=== password){let tempCurrentUsers:User[] = currentUsers;  tempCurrentUsers[loginCount-1]=users[i]; setCurrentUsers(tempCurrentUsers);console.log("currentusers ",currentUsers);return true;}}
 
   return false;
  }
 
 
-  function attemptLogin (e: React.FormEvent) {
+  async function attemptLogin (e: React.FormEvent) {
     e.preventDefault();
+    updateUsers().then( ()=>{ console.log(users,"trenutni useri zapravo");
     if(isRegistering){if(password!=passwordConfirm){alert('Ne poklapaju se šifre. Pokušajte ponovo.'); setPassword('');
         setUsername('');
         setPasswordConfirm('');
     return; }}
     let tempUsers:User[]=  users;
-    if (userExists(tempUsers)) { 
+    if (userExists(users)) { 
         if(isRegistering){alert('Prazno polje ili podaci postoje. Pokušajte ponovo.');}else{ 
         if(loginCount==1){
         setCount(loginCount+1); setButtonColor('#FFC8DD');}else{
@@ -80,7 +91,7 @@ let regFlag:boolean=false;
 let newUser:User= new User(username,password);
 tempUsers.push(newUser);
 saveUsers(tempUsers);
-updateUsers();
+
          }else{alert('Nalog postoji. Pokušajte ponovo.');}
         }else{
       alert('Netačni podaci. Pokušajte ponovo.');}
@@ -89,19 +100,21 @@ updateUsers();
     setPassword('');
 setUsername('');
 setPasswordConfirm('');
-console.log(users,'useri');
+console.log(users,'useri');});
   }
   
-function saveUsers(tempUsers:User[]){
-    console.log("USER HAS BEEN SAVED", tempUsers);
-    
-        localStorage.setItem(
-            "userStorage",
-            JSON.stringify(tempUsers)
-        );
-    
+async function saveUsers(tempUsers:User[]){
+   console.log(JSON.stringify(tempUsers),"TU");
 
-   
+    const request = new Request("http://localhost:5000/userapi", { headers: {
+      'Content-Type': 'application/json',
+  },
+      method: "POST",
+      body: JSON.stringify(tempUsers),
+    });
+    
+    const response = await fetch(request);
+    console.log("POST request response:"+response);
 
 }
    

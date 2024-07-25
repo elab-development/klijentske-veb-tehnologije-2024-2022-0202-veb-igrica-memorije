@@ -29,5 +29,5 @@ sixDaysAgo.setDate(sixDaysAgo.getDate()-6);
 sixDaysAgo.setHours(0,0,0,0);
 
 
-    this.winHistory=[new dailyWin(today),new dailyWin(dayAgo), new dailyWin(twoDaysAgo), new dailyWin(threeDaysAgo), new dailyWin(fourDaysAgo), new dailyWin(fiveDaysAgo), new dailyWin(sixDaysAgo)    ];}
+    this.winHistory=[new dailyWin(dayAgo), new dailyWin(twoDaysAgo), new dailyWin(threeDaysAgo), new dailyWin(fourDaysAgo), new dailyWin(fiveDaysAgo), new dailyWin(sixDaysAgo)    ];}
 }

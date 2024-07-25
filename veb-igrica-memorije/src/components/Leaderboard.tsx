@@ -8,7 +8,8 @@ import Navbar from './Navbar';
 const Leaderboard: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [entriesPerPage,setEntriesPerPage] = useState<number>(5);
-  const [ranking, setRanking] =useState<Rank[]>(calculateRanking(true,''));
+  const [ranking, setRanking] =useState<Rank[]>([]);
+  useEffect(()=>{calculateRanking(true,"")},[])
   const [searchQuery,setSearchQuery]=useState<string>('');
   const [isDescending,setIsDescending]= useState<boolean>(true);
   function totalWins(wins:dailyWin[]):number{
@@ -18,12 +19,30 @@ sum+=wins[i].winCount;
 }
 return sum;
   }
-  function calculateRanking(descending:boolean,search:string):Rank[] {
-    let temp= localStorage.getItem("userStorage"); 
-    let users:User[]=[];
+  async function fetchUsers(){
+
+    try {
+      const response = await fetch("http://localhost:5000/userapi");
+      if (!response.ok) {
+        throw new Error( String(response.status));
+      }
+  
+      const tempUsers = await response.json();
+      console.log("USERS!!",tempUsers);
+      
+      return tempUsers; 
+    } catch (error) {
+      console.error('Error pri fetchovanju usera:' + error);
+      return [];
+    }
+
+
+  };
+ async function calculateRanking(descending:boolean,search:string):Promise<Rank[]> {
+    fetchUsers().then((temp)=>{ console.log(temp,"temp") 
+    let users:User[]=temp;
     let ranking:Rank[]=[];
-    if(temp===null||temp===undefined) return [];
-     else users= JSON.parse(temp);
+    if(temp===null||temp===undefined||temp.length<1) return [];
 let k:number=0;
 for(k=0;k<users.length;k++){
 if(ranking.length<1){
@@ -69,9 +88,9 @@ for(let r=0;r<ranking.length;r++){
         r=-1;
     }
 }
-
-return ranking;
-  }
+setRanking(ranking);
+return ranking; });
+ return []; }
 
 
   const lastIndex = entriesPerPage*currentPage;
@@ -100,8 +119,8 @@ setCurrentPage(1);
     setEntriesPerPage(num);}
   }
 
-  useEffect(()=>{setRanking(calculateRanking(isDescending,searchQuery)); console.log(ranking,"RANKING")},[searchQuery,isDescending])
-
+  useEffect(()=>{adjustRanking()},[searchQuery,isDescending])
+async function adjustRanking(){let temp = await calculateRanking(isDescending,searchQuery); console.log(ranking,"RANKING")}
   return (<>
     <div className="default-bg"></div><Navbar></Navbar>
     <div className="leaderboard">

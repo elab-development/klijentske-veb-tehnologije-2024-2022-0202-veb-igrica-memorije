@@ -386,7 +386,10 @@ textarea {
 .card-glow {
   box-shadow: 0 0 20px #6f2d95b1;
 }
-
+.flip-all-btn{
+  z-index: 1000;
+  margin-bottom: 200px;
+}
 .card-set {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
