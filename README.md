@@ -1,18 +1,18 @@
 ### VEB IGRICA- MEMORIJE
 
 ## NAČIN POVLAČENJA I POKRETANJA
+0. Pre svega je potrebno imati docker i docker compose!!!
 1. Napravite novi folder gde planirate da sačuvate aplikaciju.
 2. Otvorite Powershell/Bash ili bilo koji drugi shell.
 3. Namestite da putanja bude putanja ka novom folderu.
 4. Izvršite sledeće komande:
-   git init
-   git clone https://github.com/elab-development/klijentske-veb-tehnologije-2024-2022-0202-veb-igrica-memorije.git
-   cd klijentske-veb-tehnologije-2024-2022-0202-veb-igrica-memorije/veb-igrica-memorije
-   npm i
-   npm run dev
+ >  git init
+ >  git clone https://github.com/elab-development/klijentske-veb-tehnologije-2024-2022-0202-veb-igrica-memorije.git
+ > cd klijentske-veb-tehnologije-2024-2022-0202-veb-igrica-memorije
+ > docker compose up
 5. Copy-pastujte link (koji je dat u formatu Local:link) u vaš preferirani browser.
 6. Napravite dva nova naloga, jedan za vas, drugi za vaseg protivnika.
-7. Prijavite se   
+7. Prijavite se  
 8. Ako naidjete na problem kontaktirajte me na ilankovicaleksandar@gmail.com
 
 ## OPIS

@@ -8,13 +8,31 @@ const app = express();
 
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'username',
-  password: 'password',
+  host: 'memorije-db',
+  user: 'root',
+  password: 'rootpass123',
   database: 'user_database'
 });
 
+connection.connect(err => {
+  if (err) throw err;
+  console.log('Povezan sa bazom.');
 
+  const createTableSql = `
+    CREATE TABLE IF NOT EXISTS  User (
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  matchesplayed INT NOT NULL,
+  windate DATE NOT NULL,
+  wincount INT NOT NULL,
+  PRIMARY KEY (username, windate)
+);`
+
+  connection.query(createTableSql, (err, result) => {
+    if (err) throw err;
+    console.log("User tabela je spremna.");
+  });
+});
 
 const initUsers = connection.query(
   'SELECT * FROM User ORDER BY username ASC, windate ASC', (err, results) => {
