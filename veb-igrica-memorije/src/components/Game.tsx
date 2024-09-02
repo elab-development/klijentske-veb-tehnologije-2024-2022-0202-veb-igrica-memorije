@@ -340,7 +340,7 @@ else{
       ))}
     </div>
 
-    <button onClick={flipAllExceptTwo}>FLIPALLFLIPALLFLIPALL</button>
+    
     
     </div>);}
 }
