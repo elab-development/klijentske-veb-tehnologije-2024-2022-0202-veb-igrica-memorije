@@ -336,7 +336,7 @@ else{
       ))}
     </div>
 
-    <button className="flip-all-btn" onClick={flipAllExceptTwo}>flip-all-flip-all-flip-all-flip-all-flip-all-flip-all-flip-all-flip-all</button>
+    
     
     </div>);}
 }
