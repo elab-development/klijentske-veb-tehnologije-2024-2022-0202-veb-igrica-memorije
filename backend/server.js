@@ -156,7 +156,7 @@ res.json([
 console.log("userinfo poslat",JSON.stringify(users))});
 const deleteUsers = `DELETE FROM User;`;
 const insertQuery = `
-INSERT INTO User (username, password, matchesplayed, wincount , windate)
+REPLACE INTO User (username, password, matchesplayed, wincount , windate)
 VALUES (?, ?, ?, ?, ?);
 `;
 const updateQuery = `
@@ -166,11 +166,11 @@ WHERE username = ? AND password = ? AND windate = ?
 `;
 
 function DbUpdate(newUsers) {
-  connection.query(deleteUsers, (err,results)=>{
+ /* connection.query(deleteUsers, (err,results)=>{
     if (err) {
       console.error('GRESKA PRI UPDATE UPITU:', err);
       return;}
-  })
+  })*/
   for (let i = 0; i < newUsers.length; i++) {
     for (let j = 0; j < newUsers[i].winHistory.length; j++) {
       connection.query(insertQuery, [newUsers[i].username,newUsers[i].password,newUsers[i].matchesPlayed, newUsers[i].winHistory[j].winCount,  new Date(newUsers[i].winHistory[j].date).toISOString().slice(0, 10)], (err, results) => {
