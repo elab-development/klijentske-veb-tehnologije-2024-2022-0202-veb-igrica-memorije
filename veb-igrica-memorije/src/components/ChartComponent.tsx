@@ -22,7 +22,9 @@ const ChartComponent: React.FC<userProps> =({userProp})=>{
           let newEntry: dailyWin = { date: new Date(tempDay), winCount: 0 };
     
           for (let j = 0; j < userProp.winHistory.length; j++) {
-            if (new Date(userProp.winHistory[j].date).getTime() === new Date(tempDay).getTime()) {
+            let historyDate:Date= new Date(userProp.winHistory[j].date);
+            historyDate.setHours(0,0,0,0);
+            if (new Date(historyDate).getTime() === new Date(tempDay).getTime()) {
               newEntry.winCount += userProp.winHistory[j].winCount;
             }
           }

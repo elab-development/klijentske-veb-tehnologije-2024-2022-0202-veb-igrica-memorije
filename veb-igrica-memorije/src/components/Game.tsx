@@ -231,10 +231,14 @@ alert("USER NOT FOUND");
 
 let todaysDate:Date=new Date();
 todaysDate.setHours(0,0,0,0);
-if(new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).toISOString().slice(0, 10)===new Date(todaysDate).toISOString().slice(0, 10)){
+console.log("DATE COMPARE!",new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).toISOString().slice(0, 10),new Date(todaysDate).toISOString().slice(0, 10))
+let correctDate:Date = new Date(todaysDate);
+correctDate.setDate(todaysDate.getDate()+1);
+if(new Date(tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].date).toISOString().slice(0, 10)===new Date(correctDate).toISOString().slice(0, 10)){
     tempUsers[c].winHistory[tempUsers[c].winHistory.length-1].winCount++;
 }else{
-   let newDailyWin:dailyWin = new dailyWin(todaysDate);
+   let newDailyWin:dailyWin = new dailyWin(correctDate);
+   newDailyWin.date.setHours(0,0,0,0);
    newDailyWin.winCount++;
    tempUsers[c].winHistory.push(newDailyWin);
 }
@@ -336,7 +340,7 @@ else{
       ))}
     </div>
 
-    
+    <button onClick={flipAllExceptTwo}>FLIPALLFLIPALLFLIPALL</button>
     
     </div>);}
 }
