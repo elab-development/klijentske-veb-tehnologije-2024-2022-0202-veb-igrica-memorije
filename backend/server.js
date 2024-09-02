@@ -9,7 +9,7 @@ const app = express();
 
 const connection = mysql.createConnection({
   host: 'memorije-db',
-  user: 'root',
+  user: 'user1',
   password: 'rootpass123',
   database: 'user_database'
 });
@@ -187,5 +187,18 @@ app.post('/userapi', (req, res) => {
     console.log('Users postovan:', users);
   });
  
+  function startPing() {
+   
+    function logPing() {
+      console.log('ping');
+    }
+  
+    
+    setInterval(logPing, 5000);
+  }
+  
 
-app.listen(5000, () => {console.log("Server je pokrenut na portu 5000.")});
+  startPing();
+  
+
+app.listen(5000,'0.0.0.0', () => {console.log("Server je pokrenut na portu 5000.")});

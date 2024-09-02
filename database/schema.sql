@@ -2,7 +2,7 @@ CREATE DATABASE user_database;
 
 USE user_database;
 
-CREATE TABLE User (
+CREATE TABLE IF NOT EXISTS User (
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   matchesplayed INT NOT NULL,

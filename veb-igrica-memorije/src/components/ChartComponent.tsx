@@ -17,6 +17,7 @@ const ChartComponent: React.FC<userProps> =({userProp})=>{
         console.log("tempday,",tempDay)
     
         for (let i = -6; i <= 0; i++) {
+          let tempDay: Date = new Date(today);
           tempDay.setDate(today.getDate() + i);
           let newEntry: dailyWin = { date: new Date(tempDay), winCount: 0 };
     
@@ -27,7 +28,7 @@ const ChartComponent: React.FC<userProps> =({userProp})=>{
           }
           newArray.push(newEntry);
         }
-    
+       console.log("USERPROP WINHISTORY:",userProp.winHistory,"CLEAN ARRAY:",newArray);
         return newArray;
       };
     

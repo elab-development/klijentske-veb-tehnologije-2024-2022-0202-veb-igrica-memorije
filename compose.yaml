@@ -9,7 +9,7 @@ services:
       - ./veb-igrica-memorije:/app
       - /app/node_modules
     ports:
-      - "5173:5173"
+      - "8080:8080"
     depends_on:
       - backend
   backend: 
@@ -23,7 +23,7 @@ services:
       - ./backend:/app
       - /app/node_modules
     ports:
-      - "3001:5000"
+      - "5000:5000"
     depends_on:
       database:
         condition: service_healthy
@@ -37,10 +37,10 @@ services:
       - memorije-network
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./database/mysql-init:/docker-entrypoint-initdb.d/init.sql
+      - ./database/mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./database/mysql-cnf:/etc/mysql/conf.d/my-custom.cnf:ro
     healthcheck:
-      test: ["CMD", "mysqladmin","ping","-h","localhost", "-u", "username", "--password=password"]
+      test: ["CMD", "mysqladmin","ping","-h","localhost", "-u", "user1", "--password=rootpass123"]
       interval: 10s
       timeout: 10s
       retries: 6
